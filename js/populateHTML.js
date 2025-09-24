@@ -50,6 +50,26 @@ function populateExp_Edu(items, id) {
       }
     }
 
+    // Agregar responsabilidades si existen
+    if (items[i].responsibilities && items[i].responsibilities.length > 0) {
+      let pSubjectsTitle = document.createElement("p");
+      pSubjectsTitle.className = "timeline-text";
+      pSubjectsTitle.innerHTML = "<strong>Responsabilidades:</strong>";
+      pSubjectsTitle.style.marginTop = "10px";
+      pSubjectsTitle.style.marginBottom = "5px";
+      divTimelineLabel.append(pSubjectsTitle);
+
+      for (let j = 0; j < items[i].responsibilities.length; j++) {
+        let pSubject = document.createElement("p");
+        pSubject.className = "timeline-text";
+        pSubject.innerHTML = "&nbsp;&nbsp;&bull; " + items[i].responsibilities[j];
+        pSubject.style.fontSize = "12px";
+        pSubject.style.marginBottom = "2px";
+        pSubject.style.opacity = "0.8";
+        divTimelineLabel.append(pSubject);
+      }
+    }
+
     // Agregar tags
     let divTags = document.createElement("div");
     for (let j = 0; j < items[i].tags.length; j++) {

@@ -93,6 +93,15 @@ export default {
       details: [
         "Desarrollo de aplicación web full-stack con Angular en frontend, Java en backend y PL/SQL Developer para gestión de bases de datos. Control de versiones y gestión de repositorios.",
       ],
+      responsibilities: [
+        "Desarrollé sentencias SQL para optimizar la calidad del proyecto",
+        "Analicé y optimicé consultas SQL, depuré errores de los servicios y mejoré consultas",
+        "Participé en sprints y resolví errores siguiendo la metodología Scrum",
+        "Desarrollé código en JS para crear, mejorar y optimizar vistas del proyecto y su calidad",
+        "Creé y validé vistas y otros elementos esenciales con precisión y exactitud a lo requerido",
+        "Contribuí a la mejora y optimización de procesos de Java, aumentando la mantenibilidad del código",
+        "Implementé servicios siguiendo arquitecturas basadas en DAO y conectados a servicios"
+      ],
       tags: [
         "Angular",
         "Node.js",
