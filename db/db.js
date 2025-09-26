@@ -58,6 +58,7 @@ export default {
       {
         projectName: "Unscramble Pokemon Names 🎮 MC Mod",
         image: "images/cv-unscramble.png",
+        alt: "Captura de pantalla de Unscramble Pokemon Names Minecraft Mod",
         summary:
           "Mod de Minecraft 1.12 para descifrar el nombre de los Pokémon en el chat del juego.",
         preview: "https://github.com/JaimeDevCode/UnscramblePokemonMod",
@@ -73,6 +74,7 @@ export default {
       {
         projectName: "Unscramble Pokemon Names 🎮 MC Mod",
         image: "images/cv-unscramble.png",
+        alt: "Captura de pantalla de Unscramble Pokemon Names Minecraft Mod",
         summary:
           "Mod de Minecraft 1.12 para descifrar el nombre de los Pokémon en el chat del juego.",
         preview: "https://github.com/JaimeDevCode/UnscramblePokemonMod",

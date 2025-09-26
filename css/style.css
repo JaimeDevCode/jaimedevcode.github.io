@@ -998,7 +998,7 @@ body.offcanvas .colorlib-nav-toggle {
   span {
   -webkit-opacity: 0.4;
   -moz-opacity: 0.4;
-  opacity: 0.4;
+  opacity: 0.6;
   -ms-filter: alpha(opacity=40);
   filter: alpha(opacity=40);
   font-size: 16px;
@@ -2308,3 +2308,22 @@ a:hover {
 a:visited {
   color: #551a8b; /* Color para enlaces visitados */
 }
+
+.accesibilidad{
+  color: #002244;
+}
+
+.accesibilidadAnio{
+  color: #000000;
+}
+
+.social-links {
+  display: flex;
+  gap: 10px; /* spacing between icons */
+  align-items: center;
+}
+.social-links img {
+  width: 48px;
+  height: auto; 
+}
+

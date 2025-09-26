@@ -117,6 +117,7 @@ function populateProjects(items, id) {
     let img = document.createElement("img");
     img.src = items[i].image;
     img.className = "img-fluid";
+    img.alt = items[i].alt ? items[i].alt : items[i].projectName;
 
     let divResumeContentLeft = document.createElement("div");
     divResumeContentLeft.className = "resume-content";

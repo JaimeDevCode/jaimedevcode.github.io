@@ -333,12 +333,10 @@ function enableDarkMode() {
     // Cambio de claro a oscuro
     toggle.src = "images/night-mode.png";
     toggle.alt = "Modo Oscuro";
-    toggle.title = "Modo Oscuro";
   } else {
     // Cambio de oscuro a claro
     toggle.src = "images/light-mode.png";
     toggle.alt = "Modo Claro";
-    toggle.title = "Modo Claro";
   }
 
   element.classList.toggle("dark-mode");
