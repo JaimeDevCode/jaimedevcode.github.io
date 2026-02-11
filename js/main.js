@@ -61,7 +61,7 @@
     }
   };
 
-  // ANIMACIONES
+  // ANIMACIONES DE CONTENIDO
   var contentWayPoint = function () {
     var i = 0;
     $(".animate-box").waypoint(
@@ -141,7 +141,7 @@
       var section = $(this).data("nav-section"),
         navbar = $("#navbar");
 
-      // Immediately highlight the clicked section
+      // Resaltar inmediatamente la sección clicada
       navActive(section);
 
       if ($('[data-section="' + section + '"]').length) {
@@ -152,7 +152,7 @@
           },
           500,
           function () {
-            // Re-apply after animation completes, then re-enable scroll detection
+            // Reaplicar tras completar la animación y reactivar detección de scroll
             navActive(section);
             setTimeout(function () {
               isClickScrolling = false;
@@ -176,11 +176,12 @@
   var navActive = function (section) {
     var $el = $("#navbar > ul");
     $el.find("li").removeClass("active");
+    $el.find("a").removeAttr("aria-current");
     $el.each(function () {
-      $(this)
-        .find('a[data-nav-section="' + section + '"]')
-        .closest("li")
-        .addClass("active");
+      var $link = $(this)
+        .find('a[data-nav-section="' + section + '"]');
+      $link.closest("li").addClass("active");
+      $link.attr("aria-current", "true");
     });
   };
 
@@ -211,7 +212,7 @@
       }
     );
 
-    // When scrolled near the bottom, activate the last navigable section
+    // Al hacer scroll cerca del final, activar la última sección navegable
     $(window).on("scroll", function () {
       if (isClickScrolling) return;
 
@@ -220,7 +221,7 @@
       var docHeight = $(document).height();
 
       if (scrollTop + windowHeight >= docHeight - 100) {
-        // Find the last section that has a matching nav link
+        // Encontrar la última sección con un enlace de navegación correspondiente
         var lastNavSection = null;
         $section.each(function () {
           var sectionName = $(this).data("section");
@@ -306,7 +307,7 @@
     });
   };
 
-  // Documento ready
+  // Documento listo
   $(function () {
     fullHeight();
     counter();
@@ -315,9 +316,9 @@
     burgerMenu();
 
     clickMenu();
-    // navActive();
+    // navActive() - desactivado;
     navigationSection();
-    // windowScroll();
+    // windowScroll() - desactivado;
 
     mobileMenuOutsideClick();
     sliderMain();
@@ -329,22 +330,35 @@
 var Accordion = function (el, multiple) {
   this.el = el || {};
   this.multiple = multiple || false;
-  // Variables privadas
+  // Variables privadas del acordeón
   var links = this.el.find(".link");
-  // Evento
+  // Evento de click
   links.on("click", { el: this.el, multiple: this.multiple }, this.dropdown);
+  // Evento de teclado (Enter y Espacio) para accesibilidad
+  links.on("keydown", { el: this.el, multiple: this.multiple }, function (e) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      Accordion.prototype.dropdown.call(this, e);
+    }
+  });
 };
 
 Accordion.prototype.dropdown = function (e) {
   var $el = e.data.el;
   var $this = $(this);
   var $next = $this.next();
+  var isOpen = $this.parent().hasClass("open");
 
   $next.slideToggle();
   $this.parent().toggleClass("open");
 
+  // Actualizar estado ARIA expandido
+  $this.attr("aria-expanded", !isOpen);
+
   if (!e.data.multiple) {
     $el.find(".submenu").not($next).slideUp().parent().removeClass("open");
+    // Cerrar estados ARIA de los demás elementos
+    $el.find(".link").not($this).attr("aria-expanded", "false");
   }
 };
 
@@ -353,25 +367,39 @@ var accordion = new Accordion($("#accordion"), false);
 function enableDarkMode() {
   var element = document.body;
   var toggle = document.getElementById("dark-mode");
+  var btn = document.getElementById("dark-mode-btn");
+  var announcer = document.getElementById("sr-announcer");
 
   if (element.classList.contains("dark-mode")) {
-    // Currently dark → switch to light
+    // Actualmente oscuro → cambiar a claro
     element.classList.remove("dark-mode");
     if (toggle) {
       toggle.src = "images/night-mode.png";
-      toggle.alt = "Activar Modo Oscuro";
+    }
+    if (btn) {
+      btn.setAttribute("aria-label", "Activar Modo Oscuro");
+      btn.title = "Activar Modo Oscuro";
+    }
+    if (announcer) {
+      announcer.textContent = "Modo claro activado";
     }
   } else {
-    // Currently light → switch to dark
+    // Actualmente claro → cambiar a oscuro
     element.classList.add("dark-mode");
     if (toggle) {
       toggle.src = "images/light-mode.png";
-      toggle.alt = "Activar Modo Claro";
+    }
+    if (btn) {
+      btn.setAttribute("aria-label", "Activar Modo Claro");
+      btn.title = "Activar Modo Claro";
+    }
+    if (announcer) {
+      announcer.textContent = "Modo oscuro activado";
     }
   }
 }
 
-// Auto-detect system dark mode preference on load
+// Detectar automáticamente la preferencia de modo oscuro del sistema al cargar
 (function () {
   var prefersDark =
     window.matchMedia &&

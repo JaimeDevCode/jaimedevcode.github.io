@@ -9,13 +9,14 @@ function populateExp_Edu(items, id) {
   for (let i = 0; i < items.length; i++) {
     let spanTimelineSublabel = document.createElement("span");
     spanTimelineSublabel.className = "timeline-sublabel";
-    spanTimelineSublabel.innerHTML = items[i].subtitle;
+    spanTimelineSublabel.textContent = items[i].subtitle;
 
     let spanh2 = document.createElement("span");
-    spanh2.innerHTML = items[i].duration;
+    spanh2.textContent = items[i].duration;
 
-    let h2TimelineLabel = document.createElement("h2");
-    h2TimelineLabel.innerHTML = items[i].title;
+    let h2TimelineLabel = document.createElement("h3");
+    h2TimelineLabel.textContent = items[i].title;
+    h2TimelineLabel.append(document.createTextNode(" "));
     h2TimelineLabel.append(spanh2);
 
     let divTimelineLabel = document.createElement("div");
@@ -27,7 +28,7 @@ function populateExp_Edu(items, id) {
     for (let j = 0; j < items[i].details.length; j++) {
       let pTimelineText = document.createElement("p");
       pTimelineText.className = "timeline-text";
-      pTimelineText.innerHTML = "&blacksquare; " + items[i].details[j];
+      pTimelineText.innerHTML = "<span aria-hidden='true'>&#9632;</span> " + items[i].details[j];
       divTimelineLabel.append(pTimelineText);
     }
 
@@ -73,16 +74,20 @@ function populateExp_Edu(items, id) {
 
     // Agregar tags
     let divTags = document.createElement("div");
+    divTags.setAttribute("role", "list");
+    divTags.setAttribute("aria-label", "Tecnolog\u00edas: " + items[i].title);
     for (let j = 0; j < items[i].tags.length; j++) {
       let spanTags = document.createElement("span");
       spanTags.className = "badge badge-secondary";
-      spanTags.innerHTML = items[i].tags[j];
+      spanTags.setAttribute("role", "listitem");
+      spanTags.textContent = items[i].tags[j];
       divTags.append(spanTags);
     }
     divTimelineLabel.append(divTags);
 
     let iFa = document.createElement("i");
     iFa.className = "fa fa-" + (items[i].icon || "circle");
+    iFa.setAttribute("aria-hidden", "true");
 
     let divTimelineIcon = document.createElement("div");
     divTimelineIcon.className = "timeline-icon color-2";
@@ -110,12 +115,13 @@ function populateProjects(items, id) {
   for (let i = 0; i < items.length; i++) {
     let h4 = document.createElement("h4");
     h4.className = "project-heading";
-    h4.innerHTML = items[i].projectName;
+    h4.textContent = items[i].projectName;
 
     let a = document.createElement("a");
     a.href = items[i].preview;
     a.target = "_blank";
     a.rel = "noopener noreferrer";
+    a.setAttribute("aria-label", items[i].projectName + " (se abre en nueva pesta\u00f1a)");
     a.append(h4);
 
     let img = document.createElement("img");
@@ -134,13 +140,16 @@ function populateProjects(items, id) {
 
     let p = document.createElement("p");
     p.className = "project-description";
-    p.innerHTML = items[i].summary;
+    p.textContent = items[i].summary;
 
     let divSpan = document.createElement("div");
+    divSpan.setAttribute("role", "list");
+    divSpan.setAttribute("aria-label", "Tecnolog\u00edas del proyecto");
     for (let k = 0; k < items[i].techStack.length; k++) {
       let span = document.createElement("span");
       span.className = "badge badge-secondary";
-      span.innerHTML = items[i].techStack[k];
+      span.setAttribute("role", "listitem");
+      span.textContent = items[i].techStack[k];
       divSpan.append(span);
     }
 
@@ -174,10 +183,15 @@ function populateLanguages(items, id) {
 
   for (let i = 0; i < items.length; i++) {
     let h3 = document.createElement("h3");
-    h3.innerHTML = items[i].skillName;
+    h3.textContent = items[i].skillName;
 
     let divProgress = document.createElement("div");
     divProgress.className = "progress";
+    divProgress.setAttribute("role", "progressbar");
+    divProgress.setAttribute("aria-valuenow", items[i].percentage);
+    divProgress.setAttribute("aria-valuemin", "0");
+    divProgress.setAttribute("aria-valuemax", "100");
+    divProgress.setAttribute("aria-label", items[i].skillName + ": " + items[i].percentage + "%");
 
     let divProgressBar = document.createElement("div");
     divProgressBar.className = "progress-bar color-" + items[i].color;
@@ -197,7 +211,7 @@ function populateLanguages(items, id) {
   }
 }
 
-//LINKS DEL FOOTER
+//ENLACES DEL PIE DE PÁGINA
 
 function populateLinks(items, id) {
   let footer = document.getElementById(id);
@@ -223,11 +237,14 @@ function populateLinks(items, id) {
         if (items[i].data[j].link) {
           a.href = items[i].data[j].link;
           a.target = "_blank";
+          a.rel = "noopener noreferrer";
         }
         if (items[i].data[j].func) {
           a.setAttribute("onclick", items[i].data[j].func);
+          a.setAttribute("role", "button");
+          a.setAttribute("tabindex", "0");
         }
-        a.innerHTML = items[i].data[j].text;
+        a.textContent = items[i].data[j].text;
 
         li.append(a);
         ul.append(li);
@@ -250,7 +267,7 @@ function populateLinks(items, id) {
   }
 }
 
-//LLAMADAS A FUNCIONES
+//LLAMADAS A LAS FUNCIONES
 
 try {
   populateExp_Edu(data.experience, "experience");

@@ -55,12 +55,17 @@
   </head>
 
   <body>
+    <!-- Enlace para saltar la navegación (WCAG 2.4.1) -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    <!-- Región activa para anuncios del lector de pantalla -->
+    <div id="sr-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
     <div id="colorlib-page">
       <div class="container-wrap">
         <!--------------------BARRA LATERAL-------------------------->
         <aside
           id="colorlib-aside"
           role="complementary"
+          aria-label="Barra lateral de navegación"
           class="border js-fullheight no-print"
         >
           <div class="text-center">
@@ -74,6 +79,7 @@
           <nav
             id="colorlib-main-menu"
             role="navigation"
+            aria-label="Menú principal"
             class="navbar"
             style="padding-top: 2em"
           >
@@ -83,25 +89,39 @@
                 <li><a href="#" data-nav-section="education" title="Ir al apartado 'Educación'">Educación</a></li>
                 <li><a href="#" data-nav-section="experience" title="Ir al apartado 'Experiencia'">Experiencia</a></li>
                 <li><a href="#" data-nav-section="projects" title="Ir al apartado 'Proyectos'">Proyectos</a></li>
-                <li><a href="#" data-nav-section="languages" title="'Ir al apartado 'Idiomas''">Idiomas</a></li>
+                <li><a href="#" data-nav-section="languages" title="Ir al apartado 'Idiomas'">Idiomas</a></li>
                 <li><a href="#" data-nav-section="contact" title="Ir al apartado 'Contacto'">Contacto</a></li>
                 <li style="margin-top: 30px">
-                  <img
-                    src="images/night-mode.png"
-                    id="dark-mode"
-                    alt="Modo Oscuro"
+                  <button
+                    type="button"
+                    id="dark-mode-btn"
+                    class="icon-button"
                     onclick="enableDarkMode()"
-                    align="center"
-                    style="cursor: pointer"
-                  />
-                  <img
-                    src="images/go-to-top.png"
-                    id="go-to-top"
-                    alt="Ir Arriba"
+                    aria-label="Activar Modo Oscuro"
+                    title="Activar Modo Oscuro"
+                  >
+                    <img
+                      src="images/night-mode.png"
+                      id="dark-mode"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    id="go-to-top-btn"
+                    class="icon-button"
                     onclick="goToTop()"
-                    align="center"
-                    style="cursor: pointer"
-                  />
+                    aria-label="Ir al inicio de la página"
+                    title="Ir al inicio de la página"
+                  >
+                    <img
+                      src="images/go-to-top.png"
+                      id="go-to-top"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </button>
                 </li>
               </ul>
             </div>
@@ -110,13 +130,14 @@
         <!--------------------BARRA LATERAL---------------------------->
 
         <!--------------------PÁGINA PRINCIPAL------------------------->
-        <div id="colorlib-main">
+        <main id="colorlib-main" role="main">
+          <div id="main-content"></div>
           <!--------------------SECCIÓN: SOBRE MÍ-------------------------->
-          <section class="colorlib-about" data-section="about">
+          <section class="colorlib-about" data-section="about" aria-label="Sobre mí">
             <div class="colorlib-narrow-content">
               <div class="row animate-box" data-animate-effect="fadeInLeft">
                 <div class="about-desc">
-                  <h1 style="margin-top: 40px">Sobre mí</h1>
+                  <h2 style="margin-top: 40px" class="section-heading">Sobre mí</h2>
                   <p>
                     ¡Hola! 👋 <br /><br />
                     Soy <strong>Jaime Sevilla Álvarez</strong>, 
@@ -144,16 +165,16 @@
           </section>
           <!--------------------SECCIÓN: SOBRE MÍ---------------------------->
           <!--------------------SECCIÓN: EDUCACIÓN Y CURSOS------------------------->
-          <section class="colorlib-education" data-section="education">
+          <section class="colorlib-education" data-section="education" aria-label="Educación y cursos">
             <div class="colorlib-narrow-content">
               <div
                 class="row row-bottom-padded-sm animate-box fadeInLeft animated"
                 data-animate-effect="fadeInLeft"
               >
                 <div class="about-desc">
-                  <h1>
+                  <h2 class="section-heading">
                     Educación <span style="color: #f9bf3f">y cursos</span>
-                  </h1>
+                  </h2>
                 </div>
               </div>
               <div class="timeline-centered" id="education"></div>
@@ -161,16 +182,16 @@
           </section>
           <!--------------------SECCIÓN: EDUCACIÓN Y CURSOS--------------------------->
           <!--------------------SECCIÓN: EXPERIENCIA------------------->
-          <section class="colorlib-experience" data-section="experience">
+          <section class="colorlib-experience" data-section="experience" aria-label="Experiencia laboral">
             <div class="colorlib-narrow-content">
               <div
                 class="row row-bottom-padded-sm animate-box fadeInLeft animated"
                 data-animate-effect="fadeInLeft"
               >
                 <div class="about-desc">
-                  <h1>
+                  <h2 class="section-heading">
                     Experiencia <span style="color: #f9bf3f">laboral</span>
-                  </h1>
+                  </h2>
                 </div>
               </div>
               <div class="timeline-centered" id="experience"></div>
@@ -178,48 +199,49 @@
           </section>
           <!--------------------SECCIÓN: EXPERIENCIA--------------------->
           <!--------------------SECCIÓN: PROYECTOS-------------------------->
-          <section class="colorlib-projects no-print" data-section="projects">
+          <section class="colorlib-projects no-print" data-section="projects" aria-label="Proyectos Desarrollados">
             <div class="colorlib-narrow-content">
               <div
                 class="row row-bottom-padded-sm animate-box"
                 data-animate-effect="fadeInLeft"
               >
                 <div class="about-desc">
-                  <h1>Proyectos <span style="color: #f9bf3f">Desarrollados</span></h1>
+                  <h2 class="section-heading">Proyectos <span style="color: #f9bf3f">Desarrollados</span></h2>
                 </div>
               </div>
               <ul
                 id="accordion"
                 class="accordion animate-box"
                 data-animate-effect="fadeInLeft"
+                role="list"
               >
                 <li>
-                  <div class="link">
+                  <div class="link" role="button" tabindex="0" aria-expanded="false" aria-controls="destacados-projects">
                     <p style="margin-bottom: 0px">Destacados</p>
-                    <i class="fa fa-chevron-down"></i>
+                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
                   </div>
-                  <ul id="destacados-projects" class="submenu"></ul>
+                  <ul id="destacados-projects" class="submenu" role="region" aria-label="Proyectos Destacados"></ul>
                 </li>
                 <li>
-                  <div class="link">
+                  <div class="link" role="button" tabindex="0" aria-expanded="false" aria-controls="freelance-projects">
                     <p style="margin-bottom: 0px">Freelance</p>
-                    <i class="fa fa-chevron-down"></i>
+                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
                   </div>
-                  <ul id="freelance-projects" class="submenu"></ul>
+                  <ul id="freelance-projects" class="submenu" role="region" aria-label="Proyectos Freelance"></ul>
                 </li>
               </ul>
             </div>
           </section>
           <!--------------------SECCIÓN: PROYECTOS---------------------------->
           <!--------------------SECCIÓN: IDIOMAS---------------------------->
-          <section class="colorlib-languages" data-section="languages">
+          <section class="colorlib-languages" data-section="languages" aria-label="Idiomas">
             <div class="colorlib-narrow-content">
               <div
                 class="row row-bottom-padded-sm animate-box"
                 data-animate-effect="fadeInLeft"
               >
                 <div class="about-desc">
-                  <h1>Idiomas</h1>
+                  <h2 class="section-heading">Idiomas</h2>
                 </div>
               </div>
               <div id="languages" class="row"></div>
@@ -228,22 +250,24 @@
 
           <!--------------------SECCIÓN: IDIOMAS------------------------------>
           <!--------------------SECCIÓN: CONTACTO--------------------------->
-          <section class="colorlib-contact" data-section="contact" id="contacto">
+          <section class="colorlib-contact" data-section="contact" id="contacto" aria-label="Contacto">
             <div class="colorlib-narrow-content">
               <div
                 class="row row-bottom-padded-sm animate-box"
                 data-animate-effect="fadeInLeft"
               >
                 <div class="about-desc">
-                  <h1>Contacto</h1>
+                  <h2 class="section-heading">Contacto</h2>
                 </div>
                 <p>Puedes encontrarme en redes sociales. Estoy en:</p>
-                <div class="social-links">
-                  <a href="https://www.linkedin.com/in/jaimesevillaalvarez" target="_blank" rel="noopener noreferrer">
-                    <img src="images/linkedin.png" alt="Ir al perfil de Jaime Sevilla Álvarez en LinkedIn">
+                <div class="social-links" role="list" aria-label="Redes sociales">
+                  <a href="https://www.linkedin.com/in/jaimesevillaalvarez" target="_blank" rel="noopener noreferrer" role="listitem" aria-label="Perfil de LinkedIn de Jaime Sevilla Álvarez (se abre en nueva pestaña)">
+                    <img src="images/linkedin.png" alt="" aria-hidden="true" />
+                    <span class="sr-only">LinkedIn</span>
                   </a>
-                  <a href="https://github.com/JaimeDevCode" target="_blank" rel="noopener noreferrer">
-                    <img src="images/github.png" alt="Ir al perfil de JaimeDevCode en GitHub">
+                  <a href="https://github.com/JaimeDevCode" target="_blank" rel="noopener noreferrer" role="listitem" aria-label="Perfil de GitHub de JaimeDevCode (se abre en nueva pestaña)">
+                    <img src="images/github.png" alt="" aria-hidden="true" />
+                    <span class="sr-only">GitHub</span>
                   </a>
                 </div>
                 <br />
@@ -253,7 +277,7 @@
           <!--------------------SECCIÓN: CONTACTO----------------------------->
 
           <!--------------------FOOTER---------------------------->
-          <section class="colorlib-footer no-print" data-section="footer">
+          <section class="colorlib-footer no-print" data-section="footer" aria-label="Pie de página">
             <div class="colorlib-narrow-content">
               <footer class="footer" id="footer">
                 <div class="row">
@@ -279,11 +303,6 @@
                           <a target="_blank" rel="noopener noreferrer" href="https://icons8.com" class="accesibilidad"
                             >Icons8</a
                           >
-                          <br />
-                          Plantilla usada by
-                          <a target="_blank" rel="noopener noreferrer" href="https://arturocode.vercel.app/" class="accesibilidad"
-                            >ArturoCode</a
-                          >
                         </div>
                       </div>
                     </div>
@@ -294,20 +313,20 @@
           </section>
 
           <!--------------------FOOTER------------------------------>
-        </div>
+        </main>
         <!--------------------PÁGINA PRINCIPAL------------------------->
       </div>
     </div>
-    <!-- Scripts jQuery -->
+    <!-- Scripts de jQuery -->
     <script src="js/ext/jquery.min.js"></script>
     <script src="js/ext/jquery.easing.1.3.js"></script>
     <script src="js/ext/jquery.waypoints.min.js"></script>
     <script src="js/ext/jquery.flexslider-min.js"></script>
     <script src="js/ext/jquery.countTo.js"></script>
 
-    <!-- Bootstrap -->
+    <!-- Script de Bootstrap -->
     <script src="js/ext/bootstrap.min.js"></script>
-    <!-- JS Principal -->
+    <!-- Script JS Principal -->
     <script src="js/main.js"></script>
   </body>
 </html>

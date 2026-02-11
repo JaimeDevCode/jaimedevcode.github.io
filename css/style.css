@@ -1,5 +1,81 @@
 /*GENERAL */
 
+/* ===== ESENCIALES DE ACCESIBILIDAD ===== */
+
+/* Enlace para saltar la navegación (WCAG 2.4.1) */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: #2c98f0;
+  color: #ffffff;
+  padding: 12px 24px;
+  z-index: 100000;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 0 0 4px 0;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid #f9bf3f;
+  outline-offset: 2px;
+  color: #ffffff;
+}
+
+/* Contenido solo para lectores de pantalla (oculto visualmente pero accesible) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Indicadores de foco visibles para TODOS los elementos interactivos (WCAG 2.4.7) */
+*:focus-visible {
+  outline: 3px solid #f9bf3f !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 4px rgba(44, 152, 240, 0.3) !important;
+}
+
+/* Botones de icono (modo oscuro, ir arriba) */
+.icon-button {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 4px;
+}
+.icon-button img {
+  display: block;
+}
+
+/* Encabezados de sección estilizados como h1 pero usando h2 para la jerarquía */
+.section-heading {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+/* Respetar preferencia de movimiento reducido (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ===== FIN DE ESENCIALES DE ACCESIBILIDAD ===== */
+
 @font-face {
   font-family: "icomoon";
   src: url("../fonts/icomoon/icomoon.eot?srf3rx");
@@ -31,7 +107,7 @@
   color: #e0e0e0;
 }
 
-/* Dark mode - Sidebar */
+/* Modo oscuro - Barra lateral */
 .dark-mode #colorlib-aside {
   background-color: #16213e;
   border-color: #2a2a4a;
@@ -52,7 +128,7 @@
   color: #fff;
 }
 
-/* Dark mode - Main content */
+/* Modo oscuro - Contenido principal */
 .dark-mode h1,
 .dark-mode h2,
 .dark-mode h3,
@@ -71,7 +147,7 @@
   color: #f0f0f0;
 }
 
-/* Dark mode - Timeline (high specificity to override base styles) */
+/* Modo oscuro - Línea de tiempo (alta especificidad para sobreescribir estilos base) */
 .dark-mode .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label {
   background: #16213e;
   color: #e0e0e0;
@@ -80,10 +156,12 @@
 .dark-mode .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label:after {
   border-color: transparent #16213e transparent transparent;
 }
-.dark-mode .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 {
+.dark-mode .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2,
+.dark-mode .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h3 {
   color: #e0e0e0;
 }
-.dark-mode .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 span {
+.dark-mode .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 span,
+.dark-mode .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h3 span {
   color: #aaa;
 }
 .dark-mode .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label .timeline-sublabel {
@@ -97,7 +175,7 @@
   color: #e0e0e0;
 }
 
-/* Dark mode - Accordion / Projects */
+/* Modo oscuro - Acordeón / Proyectos */
 .dark-mode .accordion {
   background: #16213e;
   color: #e0e0e0;
@@ -140,7 +218,7 @@
   color: #ccc;
 }
 
-/* Dark mode - Progress bars */
+/* Modo oscuro - Barras de progreso */
 .dark-mode .progress {
   background-color: #2a2a4a;
 }
@@ -148,7 +226,7 @@
   color: #e0e0e0;
 }
 
-/* Dark mode - Footer */
+/* Modo oscuro - Pie de página */
 .dark-mode footer {
   background: #16213e;
   color: #e0e0e0;
@@ -168,7 +246,7 @@
   color: #ccc;
 }
 
-/* Dark mode - Links */
+/* Modo oscuro - Enlaces */
 .dark-mode a {
   color: #6db3f2;
 }
@@ -179,12 +257,18 @@
   color: #9b86d1;
 }
 
-/* Dark mode - Contact */
+/* Modo oscuro - Indicadores de foco */
+.dark-mode *:focus-visible {
+  outline-color: #f9bf3f !important;
+  box-shadow: 0 0 0 4px rgba(249, 191, 63, 0.4) !important;
+}
+
+/* Modo oscuro - Contacto */
 .dark-mode .social-links img {
   filter: invert(1);
 }
 
-/* Dark mode - Span override */
+/* Modo oscuro - Sobreescritura de span */
 .dark-mode span {
   color: #e0e0e0;
 }
@@ -257,7 +341,6 @@ a:hover,
 a:active,
 a:focus {
   color: #2c98f0;
-  outline: none;
   text-decoration: none !important;
 }
 
@@ -537,7 +620,6 @@ figure figcaption {
 #colorlib-aside .colorlib-footer ul li a:active,
 #colorlib-aside .colorlib-footer ul li a:focus {
   text-decoration: none;
-  outline: none;
   color: black;
 }
 
@@ -1115,7 +1197,7 @@ body.offcanvas .colorlib-nav-toggle {
   margin-top: 0px;
 }
 
-.timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 {
+.timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2,\n.timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h3 {
   margin-bottom: 10px;
   font-size: 20px;
   font-weight: 500;
@@ -1808,7 +1890,6 @@ body.offcanvas .colorlib-nav-toggle {
 .colorlib-social li a:hover,
 .colorlib-social li a:active,
 .colorlib-social li a:focus {
-  outline: none;
   text-decoration: none;
   color: #2c98f0;
 }
@@ -1856,7 +1937,6 @@ body.offcanvas .colorlib-nav-toggle {
 .btn:focus {
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
-  outline: none !important;
 }
 
 .btn-primary {
@@ -2321,7 +2401,7 @@ ul {
 span {
   font-family: "Montserrat", sans-serif;
   /* color: black; */
-  display: inline-block; /* change the display type           */
+  display: inline-block; /* cambiar el tipo de visualización */
   margin: 0 5px;
 }
 
@@ -2331,7 +2411,7 @@ span {
   padding: 5px;
 }
 
-/* Clearfix (clear floats) */
+/* Clearfix (limpiar flotantes) */
 .row-image::after {
   content: "";
   clear: both;
@@ -2472,7 +2552,7 @@ a:visited {
 
 .social-links {
   display: flex;
-  gap: 10px; /* spacing between icons */
+  gap: 10px; /* espacio entre iconos */
   align-items: center;
 }
 .social-links img {
