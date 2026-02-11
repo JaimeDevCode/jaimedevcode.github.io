@@ -4,6 +4,7 @@ export default {
       title: "Desarrollo de Aplicaciones Multiplataforma",
       duration: "2022 - 2024",
       subtitle: "IES Nervión, Sevilla",
+      icon: "graduation-cap",
       details: [
         "Desarrollo de aplicaciones multiplataforma, web y bases de datos. Programación en Java, JavaScript, Python, C#, XML, HTML, CSS y SQL.",
       ],
@@ -35,6 +36,7 @@ export default {
       title: "Formación complementaria",
       duration: "2022 - actualidad",
       subtitle: "Google Coursera, El Rincon del Hacker...",
+      icon: "certificate",
       details: [
         "Curso de Analisis de Datos - Google, curso de Fundamentos de ciberseguridad y hacking ético - El Rincón del Hacker,...",
       ],
@@ -92,6 +94,7 @@ export default {
       title: "Alten Spain",
       duration: "Abril. 2024 - actualidad",
       subtitle: "Full Stack Developer",
+      icon: "briefcase",
       details: [
         "Desarrollo de aplicación web full-stack con Angular en frontend, Java en backend y PL/SQL Developer para gestión de bases de datos. Control de versiones y gestión de repositorios.",
       ],

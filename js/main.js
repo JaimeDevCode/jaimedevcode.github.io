@@ -134,17 +134,30 @@
     });
   };
 
+  var isClickScrolling = false;
+
   var clickMenu = function () {
     $('#navbar a:not([class="external"])').click(function (event) {
       var section = $(this).data("nav-section"),
         navbar = $("#navbar");
 
+      // Immediately highlight the clicked section
+      navActive(section);
+
       if ($('[data-section="' + section + '"]').length) {
+        isClickScrolling = true;
         $("html, body").animate(
           {
             scrollTop: $('[data-section="' + section + '"]').offset().top - 55,
           },
-          500
+          500,
+          function () {
+            // Re-apply after animation completes, then re-enable scroll detection
+            navActive(section);
+            setTimeout(function () {
+              isClickScrolling = false;
+            }, 100);
+          }
         );
       }
 
@@ -197,6 +210,29 @@
         },
       }
     );
+
+    // When scrolled near the bottom, activate the last navigable section
+    $(window).on("scroll", function () {
+      if (isClickScrolling) return;
+
+      var scrollTop = $(window).scrollTop();
+      var windowHeight = $(window).height();
+      var docHeight = $(document).height();
+
+      if (scrollTop + windowHeight >= docHeight - 100) {
+        // Find the last section that has a matching nav link
+        var lastNavSection = null;
+        $section.each(function () {
+          var sectionName = $(this).data("section");
+          if ($('#navbar a[data-nav-section="' + sectionName + '"]').length > 0) {
+            lastNavSection = sectionName;
+          }
+        });
+        if (lastNavSection) {
+          navActive(lastNavSection);
+        }
+      }
+    });
   };
 
   var sliderMain = function () {
@@ -301,7 +337,8 @@ var Accordion = function (el, multiple) {
 
 Accordion.prototype.dropdown = function (e) {
   var $el = e.data.el;
-  ($this = $(this)), ($next = $this.next());
+  var $this = $(this);
+  var $next = $this.next();
 
   $next.slideToggle();
   $this.parent().toggleClass("open");
@@ -313,43 +350,36 @@ Accordion.prototype.dropdown = function (e) {
 
 var accordion = new Accordion($("#accordion"), false);
 
-function enableLightMode() {
-  document.body.classList.toggle("light-mode");
-}
-
-const isLightMode = () =>
-  window.matchMedia &&
-  window.matchMedia("(prefers-color-scheme: light)").matches;
-
-if (isLightMode()) {
-    enableLightMode();
-  }
-
 function enableDarkMode() {
   var element = document.body;
   var toggle = document.getElementById("dark-mode");
 
-  if (!element.classList.contains("dark-mode")) {
-    // Cambio de claro a oscuro
-    toggle.src = "images/night-mode.png";
-    toggle.alt = "Modo Oscuro";
+  if (element.classList.contains("dark-mode")) {
+    // Currently dark → switch to light
+    element.classList.remove("dark-mode");
+    if (toggle) {
+      toggle.src = "images/night-mode.png";
+      toggle.alt = "Activar Modo Oscuro";
+    }
   } else {
-    // Cambio de oscuro a claro
-    toggle.src = "images/light-mode.png";
-    toggle.alt = "Modo Claro";
+    // Currently light → switch to dark
+    element.classList.add("dark-mode");
+    if (toggle) {
+      toggle.src = "images/light-mode.png";
+      toggle.alt = "Activar Modo Claro";
+    }
   }
-
-  element.classList.toggle("dark-mode");
 }
 
-
-const isDarkMode = () =>
-  window.matchMedia &&
-  window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-if (isDarkMode()) {
-  enableDarkMode();
-}
+// Auto-detect system dark mode preference on load
+(function () {
+  var prefersDark =
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches;
+  if (prefersDark) {
+    enableDarkMode();
+  }
+})();
 
 function goToTop() {
   window.scrollTo({

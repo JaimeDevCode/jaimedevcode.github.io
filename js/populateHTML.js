@@ -4,6 +4,7 @@ import { default as data } from "../db/db.js";
 
 function populateExp_Edu(items, id) {
   let mainContainer = document.getElementById(id);
+  if (!mainContainer || !items) return;
 
   for (let i = 0; i < items.length; i++) {
     let spanTimelineSublabel = document.createElement("span");
@@ -81,7 +82,7 @@ function populateExp_Edu(items, id) {
     divTimelineLabel.append(divTags);
 
     let iFa = document.createElement("i");
-    iFa.className = "fa fa-" + items[i].icon;
+    iFa.className = "fa fa-" + (items[i].icon || "circle");
 
     let divTimelineIcon = document.createElement("div");
     divTimelineIcon.className = "timeline-icon color-2";
@@ -104,6 +105,8 @@ function populateExp_Edu(items, id) {
 
 function populateProjects(items, id) {
   let projectdesign = document.getElementById(id);
+  if (!projectdesign || !items) return;
+
   for (let i = 0; i < items.length; i++) {
     let h4 = document.createElement("h4");
     h4.className = "project-heading";
@@ -112,6 +115,7 @@ function populateProjects(items, id) {
     let a = document.createElement("a");
     a.href = items[i].preview;
     a.target = "_blank";
+    a.rel = "noopener noreferrer";
     a.append(h4);
 
     let img = document.createElement("img");
@@ -166,6 +170,8 @@ function populateProjects(items, id) {
 
 function populateLanguages(items, id) {
   let languagesTag = document.getElementById(id);
+  if (!languagesTag || !items) return;
+
   for (let i = 0; i < items.length; i++) {
     let h3 = document.createElement("h3");
     h3.innerHTML = items[i].skillName;
@@ -195,6 +201,7 @@ function populateLanguages(items, id) {
 
 function populateLinks(items, id) {
   let footer = document.getElementById(id);
+  if (!footer || !items) return;
 
   for (let i = 0; i < items.length; i++) {
     if (items[i].label != "copyright-text") {
@@ -245,12 +252,18 @@ function populateLinks(items, id) {
 
 //LLAMADAS A FUNCIONES
 
-populateExp_Edu(data.experience, "experience");
-populateExp_Edu(data.education, "education");
+try {
+  populateExp_Edu(data.experience, "experience");
+  populateExp_Edu(data.education, "education");
 
-populateProjects(data.projects.destacados, "destacados-projects");
-populateProjects(data.projects.freelance, "freelance-projects");
+  populateProjects(data.projects.destacados, "destacados-projects");
+  populateProjects(data.projects.freelance, "freelance-projects");
 
-populateLanguages(data.languages, "languages");
+  populateLanguages(data.languages, "languages");
 
-populateLinks(data.footer, "footer");
+  if (data.footer) {
+    populateLinks(data.footer, "footer");
+  }
+} catch (error) {
+  console.error("Error populating HTML:", error);
+}
