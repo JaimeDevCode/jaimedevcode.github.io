@@ -2,54 +2,70 @@ export default {
     education: [
     {
       title: "Desarrollo de Aplicaciones Multiplataforma",
-      duration: "2022 - 2024",
-      subtitle: "IES Nervión, Sevilla",
+      duration: "2022 - Junio 2024",
+      subtitle: "IES Nervión, Sevilla, España",
       icon: "graduation-cap",
       details: [
-        "Desarrollo de aplicaciones multiplataforma, web y bases de datos. Programación en Java, JavaScript, Python, C#, XML, HTML, CSS y SQL.",
+        "Grado Superior en Desarrollo de Aplicaciones Multiplataforma. Formación integral en desarrollo de software, bases de datos, programación de servicios y aplicaciones móviles.",
       ],
       tags: [
-        "Windows",
-        "Ubuntu",
-        "HTML",
-        "CSS",
-        "LESS",
-        "SASS",
-        "Bootstrap",
         "Java",
         "JavaScript",
-        "SQL",
-        "PHP",
-        "Python",
+        "TypeScript",
         "C#",
+        "Python",
+        "SQL",
+        "HTML",
+        "CSS",
+        "Bootstrap",
+        "LESS",
+        "SASS",
       ],
       relevantSubjects: [
         "Sistemas Informáticos",
         "Programación",
         "Programación de Servicios y Procesos",
         "Acceso a Datos",
-        "Base de Datos",
+        "Bases de Datos",
         "Programación Multimedia y Dispositivos Móviles"
+      ]
+    },
+    {
+      title: "Bachillerato",
+      duration: "2020 - Junio 2022",
+      subtitle: "IES Martínez Montañés, Sevilla, España",
+      icon: "graduation-cap",
+      details: [
+        "Bachillerato con enfoque en Tecnologías de la Información y la Comunicación (TIC) y Programación.",
+      ],
+      tags: [
+        "Python",
+        "SQL",
+        "Scratch",
+        "TIC",
+      ],
+      relevantSubjects: [
+        "Tecnologías de la Información y la Comunicación (TIC)",
+        "Programación (Python, SQL, Scratch)"
       ]
     },
     {
       title: "Formación complementaria",
       duration: "2022 - actualidad",
-      subtitle: "Google Coursera, El Rincon del Hacker...",
+      subtitle: "Google Coursera, El Rincón del Hacker...",
       icon: "certificate",
       details: [
-        "Curso de Analisis de Datos - Google, curso de Fundamentos de ciberseguridad y hacking ético - El Rincón del Hacker,...",
+        "Curso de Análisis de Datos - Google, Curso de Fundamentos de Ciberseguridad y Hacking Ético - El Rincón del Hacker, entre otros.",
       ],
       tags: [
         "Linux",
-        "Windows",
         "Kali Linux",
         "Wireshark",
         "Nmap",
         "Metasploit",
-        "Cyberseguridad",
-        "Hacking ético",
-        "Análisis de datos",
+        "Ciberseguridad",
+        "Hacking Ético",
+        "Análisis de Datos",
         "Google",
         "Coursera",
       ],
@@ -57,6 +73,21 @@ export default {
   ],
     projects: {
     destacados: [
+      {
+        projectName: "RPG Maker Translator 🗺️",
+        image: "images/cv-rpgmaker-translator.png",
+        alt: "Captura de pantalla de RPG Maker Translator",
+        summary:
+          "Traductor automatico y totalmente gratuito para RPG Maker MV y MZ.",
+        preview: "https://github.com/JaimeDevCode/RPGMakerTranslator",
+        techStack: [
+          "Python",
+          "RPG Maker Modding",
+          "Google Translate API",
+          "DeepL API",
+          "GitHub",
+        ],
+      },
       {
         projectName: "Unscramble Pokemon Names 🎮 MC Mod",
         image: "images/cv-unscramble.png",
@@ -87,35 +118,87 @@ export default {
           "GitHub",
         ],
       },
+      {
+        projectName: "RPG Maker Translator 🗺️",
+        image: "images/cv-rpgmaker-translator.png",
+        alt: "Captura de pantalla de RPG Maker Translator",
+        summary:
+          "Traductor automatico y totalmente gratuito para RPG Maker MV y MZ.",
+        preview: "https://github.com/JaimeDevCode/RPGMakerTranslator",
+        techStack: [
+          "Python",
+          "RPG Maker Modding",
+          "Google Translate API",
+          "DeepL API",
+          "GitHub",
+        ],
+      },
     ],
   },
   experience: [
     {
-      title: "Alten Spain",
-      duration: "Abril. 2024 - actualidad",
-      subtitle: "Full Stack Developer",
+      title: "ALTEN",
+      duration: "Abril 2024 - Presente",
+      subtitle: "Angular & SQL Developer · Sevilla, España",
       icon: "briefcase",
       details: [
-        "Desarrollo de aplicación web full-stack con Angular en frontend, Java en backend y PL/SQL Developer para gestión de bases de datos. Control de versiones y gestión de repositorios.",
+        "Desarrollo Full-Stack en proyecto enterprise con Angular (frontend), Java (backend) y PL/SQL (bases de datos). Metodología ágil Scrum con sprints y control de versiones.",
       ],
       responsibilities: [
-        "Desarrollé sentencias SQL para optimizar la calidad del proyecto",
-        "Analicé y optimicé consultas SQL, depuré errores de los servicios y mejoré consultas",
-        "Participé en sprints y resolví errores siguiendo la metodología Scrum",
-        "Desarrollé código en JS para crear, mejorar y optimizar vistas del proyecto y su calidad",
-        "Creé y validé vistas y otros elementos esenciales con precisión y exactitud a lo requerido",
-        "Contribuí a la mejora y optimización de procesos de Java, aumentando la mantenibilidad del código",
-        "Implementé servicios siguiendo arquitecturas basadas en DAO y conectados a servicios"
+        "Desarrollo y optimización de sentencias SQL para mejorar la calidad del proyecto",
+        "Análisis, depuración y optimización de consultas SQL y servicios",
+        "Participación activa en sprints siguiendo metodología Scrum",
+        "Desarrollo y optimización de vistas con JavaScript, TypeScript y Angular",
+        "Creación y validación de vistas y componentes conforme a requisitos funcionales",
+        "Mejora de procesos Java, aumentando la mantenibilidad del código",
+        "Implementación de servicios basados en arquitecturas DAO",
+        "Implementación de mejoras de accesibilidad (WAI-ARIA) en aplicaciones Angular"
       ],
       tags: [
         "Angular",
-        "Node.js",
-        "PL/SQL",
-        "STS",
         "TypeScript",
+        "JavaScript",
+        "Java",
+        "PL/SQL",
+        "Spring",
+        "Git",
+        "Scrum",
+        "WAI-ARIA",
       ],
     },
   ],
+  skills: {
+    languages: [
+      { name: "C#", icon: "fa-code" },
+      { name: "Kotlin", icon: "fa-android" },
+      { name: "Java", icon: "fa-coffee" },
+      { name: "JavaScript", icon: "fa-code" },
+      { name: "TypeScript", icon: "fa-code" },
+      { name: "Python", icon: "fa-code" },
+      { name: "T-SQL", icon: "fa-database" },
+      { name: "PL/SQL", icon: "fa-database" },
+    ],
+    frameworks: [
+      { name: "MAUI", icon: "fa-mobile" },
+      { name: "Angular", icon: "fa-cogs" },
+      { name: "Spring", icon: "fa-leaf" },
+      { name: "Hibernate", icon: "fa-database" },
+    ],
+    technologies: [
+      { name: ".NET", icon: "fa-windows" },
+      { name: "Unity", icon: "fa-gamepad" },
+      { name: "Cisco", icon: "fa-server" },
+      { name: "Git", icon: "fa-git" },
+      { name: "Azure", icon: "fa-cloud" },
+      { name: "SignalR", icon: "fa-signal" },
+    ],
+    databases: [
+      { name: "Firestore", icon: "fa-fire" },
+      { name: "MySQL", icon: "fa-database" },
+      { name: "SQL Server", icon: "fa-database" },
+      { name: "Oracle", icon: "fa-database" },
+    ],
+  },
   languages: [
     {
       title: "Spanish",
@@ -125,9 +208,9 @@ export default {
     },
     {
       title: "English",
-      skillName: "Inglés (B1 - B2)",
+      skillName: "Inglés (Intermedio-Avanzado)",
       color: "1",
-      percentage: "70",
+      percentage: "75",
     },
   ],
 };

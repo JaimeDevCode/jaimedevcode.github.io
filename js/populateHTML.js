@@ -175,6 +175,42 @@ function populateProjects(items, id) {
   }
 }
 
+// HABILIDADES TÉCNICAS
+
+function populateSkills(skills) {
+  if (!skills) return;
+
+  const categories = [
+    { key: "languages", id: "skills-languages" },
+    { key: "frameworks", id: "skills-frameworks" },
+    { key: "technologies", id: "skills-technologies" },
+    { key: "databases", id: "skills-databases" },
+  ];
+
+  for (let c = 0; c < categories.length; c++) {
+    let container = document.getElementById(categories[c].id);
+    let items = skills[categories[c].key];
+    if (!container || !items) continue;
+
+    for (let i = 0; i < items.length; i++) {
+      let skillTag = document.createElement("div");
+      skillTag.className = "skill-tag";
+      skillTag.setAttribute("role", "listitem");
+
+      let icon = document.createElement("i");
+      icon.className = "fa " + items[i].icon;
+      icon.setAttribute("aria-hidden", "true");
+
+      let name = document.createElement("span");
+      name.textContent = items[i].name;
+
+      skillTag.append(icon);
+      skillTag.append(name);
+      container.append(skillTag);
+    }
+  }
+}
+
 // IDIOMAS
 
 function populateLanguages(items, id) {
@@ -272,6 +308,8 @@ function populateLinks(items, id) {
 try {
   populateExp_Edu(data.experience, "experience");
   populateExp_Edu(data.education, "education");
+
+  populateSkills(data.skills);
 
   populateProjects(data.projects.destacados, "destacados-projects");
   populateProjects(data.projects.freelance, "freelance-projects");
