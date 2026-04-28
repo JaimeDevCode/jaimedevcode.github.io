@@ -74,6 +74,21 @@ export default {
     projects: {
     destacados: [
       {
+        projectName: "RiskRoute 🛣️",
+        image: "images/cv-riskroute.png",
+        alt: "Captura de pantalla de RiskRoute",
+        summary:
+          "Herramienta CLI que analiza archivos GPX y clasifica cada segmento de ruta como carretera asfaltada, camino de tierra o desconocido usando datos de OpenStreetMap sin necesidad de claves API.",
+        preview: "https://github.com/JaimeDevCode/RiskRoute",
+        techStack: [
+          "Python",
+          "OpenStreetMap",
+          "Overpass API",
+          "GPX",
+          "GitHub",
+        ],
+      },
+      {
         projectName: "RPG Maker Translator 🗺️",
         image: "images/cv-rpgmaker-translator.png",
         alt: "Captura de pantalla de RPG Maker Translator",
@@ -88,22 +103,23 @@ export default {
           "GitHub",
         ],
       },
+    ],
+    freelance: [
       {
-        projectName: "Unscramble Pokemon Names 🎮 MC Mod",
-        image: "images/cv-unscramble.png",
-        alt: "Captura de pantalla de Unscramble Pokemon Names Minecraft Mod",
+        projectName: "RiskRoute 🛣️",
+        image: "images/cv-riskroute.png",
+        alt: "Captura de pantalla de RiskRoute",
         summary:
-          "Mod de Minecraft 1.12 para descifrar el nombre de los Pokémon en el chat del juego.",
-        preview: "https://github.com/JaimeDevCode/UnscramblePokemonMod",
+          "Herramienta CLI que analiza archivos GPX y clasifica cada segmento de ruta como carretera asfaltada, camino de tierra o desconocido usando datos de OpenStreetMap sin necesidad de claves API.",
+        preview: "https://github.com/JaimeDevCode/RiskRoute",
         techStack: [
-          "Java",
-          "Minecraft Modding",
-          "Forge",
+          "Python",
+          "OpenStreetMap",
+          "Overpass API",
+          "GPX",
           "GitHub",
         ],
       },
-    ],
-    freelance: [
       {
         projectName: "Unscramble Pokemon Names 🎮 MC Mod",
         image: "images/cv-unscramble.png",
